@@ -19,14 +19,13 @@ app.Run(async (context) =>
 
         using (var db = new UserContext())
         {
-            db.Database.EnsureDeleted();
-            db.Database.EnsureCreated();
-            User user1 = new User { Name = "Tom", Age = 33 };
-            User user2 = new User { Name = "Alice", Age = 26 };
-
-            // добавляем их в бд
-            db.Users.AddRange(user1, user2);
+            // добавляем в бд
+            db.Users.AddRange(new User() { Name = name, Age = Convert.ToInt32(age)});
             db.SaveChanges();
+
+            var users = db.Users.ToList();
+            foreach (var user in users)
+                Console.WriteLine(user.Name);
         }
         await context.Response.WriteAsync($"<div><p>Name: {name}</p><p>Age: {age}</p></div>");
     }
