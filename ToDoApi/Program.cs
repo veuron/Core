@@ -1,3 +1,8 @@
+//Зависимости nuget
+/* Microsoft.EntityFrameworkCore.InMemory
+   Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore
+*/
+
 using Microsoft.EntityFrameworkCore;
 using ToDoApi;
 
